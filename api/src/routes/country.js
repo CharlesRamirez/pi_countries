@@ -8,11 +8,16 @@ const{ activities,countries,Country_Activities} = require('../db.js');
 let server = express();
 server.use(express.json());
 
-const data = async() => {
-    const arr = await axios.get("https://restcountries.com/v3.1/all");
-    return arr.data.results;
-}
-console.log(data().toJSON);
+// const data = async() => {
+//     try{
+//     const arr = await axios.get("https://restcountries.com/v3.1/all");
+//     return arr.data.results;
+//     }
+//     catch(error){
+//         console.log(error);
+//     }
+// }
+// console.log(data());
 
 
 
@@ -28,16 +33,24 @@ console.log(data().toJSON);
 //     const getCountries = async() => {
 
 //         try{
-//             const response = await axios.get("https://restcountries.com/v3.1/all");
-//             console.log("Esto me devuelve",response);
-//             res.send(response.data);
+//             const arr = await axios.get("https://restcountries.com/v3.1/all");
+//             //console.log("Esto me devuelve",response);
+            
 
 //         }catch(error){
 //             console.log(error);
 //         };
-        
+//         res.send(arr.data.results);
 //     };
       
 //   });
+const req = async () => {
+    try{
+    let response = await axios.get("https://restcountries.com/v3.1/all");
+    console.log(response.data);
+}catch(error){console.log(error);}
+    
+  }
+  req() // Calling this will make a get request and log the response.
 
 module.exports=server;
