@@ -1,12 +1,14 @@
 const  express  = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const { axios } = require ('axios');
+const  axios  = require ('axios').default;
 const sequelize = require ('sequelize');
+//const bodyParser = require('body-parser');
 const{ activities,countries,Country_Activities} = require('../db.js');
 
 let server = express();
 server.use(express.json());
+//server.use(express.urlencoded({extended:true}));
 
 // const data = async() => {
 //     try{
